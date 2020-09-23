@@ -87,31 +87,3 @@ executable cardano-tx
     ld-options: -static -pthread
   default-language: Haskell2010
 
-test-suite unit
-  type: exitcode-stdio-1.0
-  main-is: Main.hs
-  other-modules:
-      Data.UTxO.Transaction.Cardano.ByronSpec
-      Data.UTxO.Transaction.Cardano.ShelleySpec
-      Paths_cardano_transactions
-  hs-source-dirs:
-      test
-  ghc-options: -Wall -Wcompat -fwarn-redundant-constraints -threaded -rtsopts -with-rtsopts=-N
-  build-tools:
-      cardano-tx
-  build-depends:
-      QuickCheck
-    , base >=4.7 && <5
-    , bytestring
-    , cardano-crypto-wrapper
-    , cardano-ledger
-    , cardano-ledger-test
-    , cardano-transactions
-    , cborg
-    , hedgehog-quickcheck
-    , hspec
-    , process
-    , text
-  if flag(release)
-    ghc-options: -Werror
-  default-language: Haskell2010
